@@ -5,6 +5,9 @@ class Route extends Request
 {   
     private static string $head = '';
 
+    /**
+    * You can also add a classnamae in this and the behaviour will change
+    */
     public static function add(string $name, ?string $class = null): Path 
     {
         $path = new Path($class);
@@ -15,10 +18,21 @@ class Route extends Request
         return $path;
     }
 
+    /**
+    * I want you to handle your own 404, because depending on your server setup i might break it in some way
+    */
+
     public static function error(callable $process): void
     {
         self::$path_collections['error'] = $process;
     }
+
+    /**
+    * example if you use 
+    * Route::head('api')
+    * all the subsequent route registered using Route::append() will start with /api
+    * And you can reset by calling another Route::head()
+    */
 
     public static function head(string $head): void 
     {
