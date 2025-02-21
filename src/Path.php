@@ -9,6 +9,12 @@ class Path
     /** @type Callable */
     private $onError;
 
+    /**
+    * Depends on wether you registered classname or not.
+    * If you do the string must corresponds to it's designated method,
+    * you can register callable instead, it will get called regardless if classname is registered or not
+    */
+
     public function on(array $method, string | callable $process): self 
     {
         foreach ($method as $req_method) {
@@ -16,6 +22,10 @@ class Path
         }
         return $this;
     }
+
+    /**
+    * A bunch of method for convenience
+    */
 
     public function get(string | callable $process): self 
     {
@@ -37,6 +47,10 @@ class Path
         return $this->on(['delete'], $process);
     }
 
+    /**
+    * You can register callable or classname. But only if that classname has __invoke() magic method
+    */
+
     public function middleware(callable | string $middleware, array $on = ['ALL']): self 
     {
         foreach ($on as $method) {
@@ -44,6 +58,11 @@ class Path
         }
         return $this;
     }
+
+    /**
+    * How you define your error if the request fail is up to you
+    * we use callable here
+    */
 
     public function onError(callable $process) 
     {
