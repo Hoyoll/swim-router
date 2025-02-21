@@ -1,0 +1,20 @@
+{
+    "name": "swim/router",
+    "description": "Server router that does not see colors i.e you can hopefully use it for any server setup",
+    "type": "library",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Swim\\Router\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Effendi Saputra"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php" : ">8.0"
+    }
+}
