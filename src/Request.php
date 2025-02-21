@@ -11,6 +11,8 @@ class Request
 
     /**
      * You want to give it uripath, and request method
+     * $packets here is a collections of data your app wants to consume, like headers, response object that you want to use
+     * you can use however you like. But passing object is preferable
      */
     
     public static function dispatch(string $uri, string $method, mixed $packets = null): void
